@@ -1,9 +1,130 @@
+<!DOCTYPE html>
 <html>
- 
+<head>
+	<title>Glassmorphic Black Box with Video Background</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: #000000;
+		}
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+		}
+		video {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -1;
+		}
+		.glassmorphic-box {
+			background-color: rgba(255, 255, 255, 0.25);
+			backdrop-filter: blur(20px);
+			border-radius: 20px;
+			padding: 20px;
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+			color: #ffffff;
+			width: 35%;
+			height: 75vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			font-size: 30px;
+			text-align: center;
+		}
+		h1 {
+			margin-top: 0;
+			word-wrap: break-word;
+			line-height: 1;
+		}
+		textarea {
+			background-color: transparent;
+			border: none;
+			border-bottom: 2px solid #ffffff;
+			color: #ffffff;
+			font-size: 24px;
+			margin-top: 20px;
+			padding: 10px;
+			text-align: center;
+			width: 80%;
+			height: 70%;
+			resize: none;
+			outline: none;
+		}
+		input {
+			background-color: transparent;
+			border: none;
+			border-bottom: 2px solid #ffffff;
+			color: #ffffff;
+			font-size: 24px;
+			margin-top: 20px;
+			padding: 10px;
+			text-align: center;
+			width: 80%;
+			outline: none;
+		}
+		button {
+			margin-top: 20px;
+			background-color: transparent;
+			border: 2px solid rgba(255, 255, 255, 0.5);
+			border-radius: 20px;
+			color: #ffffff;
+			font-size: 24px;
+			padding: 10px 20px;
+			cursor: pointer;
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+			backdrop-filter: blur(20px);
+			-webkit-backdrop-filter: blur(20px);
+			border: 1px solid rgba(255, 255, 255, 0.18);
+		}
+	</style>
+</head>
 <body>
-  <h1>Ellis</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+	<div class="container">
+		<video autoplay muted loop>
+			<source src="clouds.mp4" type="video/mp4">
+		</video>
+		<div class="glassmorphic-box">
+			<h1>A Daydream Journal</h1>
+			<input type="text" id="journal-title" placeholder="Title">
+			<textarea id="journal-entry" placeholder="Start Typing..."></textarea>
+			<button onclick="saveTextAsFile()">Save</button>
+		</div>
+	</div>
+	<script>
+		function saveTextAsFile() {
+			const titleToSave = document.getElementById("journal-title").value;
+			const textToSave = document.getElementById("journal-entry").value;
+			const textAsBlob = new Blob([textToSave], {type:"text/plain"});
+			const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
+			const fileNameToSaveAs = `${titleToSave} (${currentDate}).txt`;
+
+			const downloadLink = document.createElement("a");
+			downloadLink.download = fileNameToSaveAs;
+			downloadLink.innerHTML = "Download File";
+			if (window.webkitURL != null) {
+				// Chrome allows the link to be clicked without actually adding it to the DOM
+				downloadLink.href = window.webkitURL.createObjectURL(textAsBlob);
+			} else {
+				// Firefox requires the link to be added to the DOM before it can be clicked
+				downloadLink.href = window.URL.createObjectURL(textAsBlob);
+				downloadLink.onclick = event => document.body.removeChild(event.target);
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+			}
+			downloadLink.click();
+		}
+	</script>
 </body>
- 
 </html>
