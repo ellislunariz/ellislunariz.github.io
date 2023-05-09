@@ -60,6 +60,15 @@
 			}
             
 		}
+        @media only screen and (max-width: 768px) {
+        /* Adjust text color for mobile devices */
+        body {
+            color: #333333;
+        }
+        ::placeholder {
+            color: #999999;
+        }
+        }
 		textarea, input {
 			background-color: transparent;
 			border: none;
@@ -96,7 +105,7 @@
 <body>
 	<div class="container">
 		<video autoplay muted loop playsinline>
-			<source src="https://raw.githubusercontent.com/ellislunariz/ellislunariz.github.io/main/clouds.mp4" type="video/mp4">
+			<source src="clouds.mp4" type="video/mp4">
 		</video>
 		<div class="glassmorphic-box">
 			<h1>Daydream Journal</h1>
