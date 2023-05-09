@@ -58,19 +58,14 @@
 			h1 {
 				font-size: 5vw;
 			}
-		}
-		@media only screen and (max-width: 375px) {
-			.glassmorphic-box {
-				width: 80%;
-				height: 70vh;
-			}
+            
 		}
 		textarea, input {
 			background-color: transparent;
 			border: none;
 			border-bottom: 2px solid #ffffff;
 			color: #ffffff;
-			font-size: 24px;
+			font-size:larger;
 			margin-top: 20px;
 			padding: 10px;
 			text-align: center;
@@ -88,7 +83,7 @@
 			border: 2px solid rgba(255, 255, 255, 0.5);
 			border-radius: 20px;
 			color: #ffffff;
-			font-size: 24px;
+			font-size: larger;
 			padding: 10px 20px;
 			cursor: pointer;
 			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -132,6 +127,18 @@
 				document.body.appendChild(downloadLink);
 			}
 			downloadLink.click();
+		}
+
+		// Detect if mobile device is being used
+		if (/Mobi|Android/i.test(navigator.userAgent)) {
+			const glassmorphicBox = document.querySelector('.glassmorphic-box');
+			if (glassmorphicBox) {
+				glassmorphicBox.style.width = '80%';
+                }
+            const html = document.querySelector('html');
+            if (html) {
+                html.style.fontSize = '36px'; // Adjust the font size here
+			}
 		}
 	</script>
 </body>
