@@ -8,7 +8,10 @@
 			margin: 0;
 			padding: 0;
 			background: #000000;
+			font-size: 16px;
 		}
+
+
 		.container {
 			display: flex;
 			align-items: center;
@@ -17,6 +20,7 @@
 			position: relative;
 			overflow: hidden;
 		}
+
 		video {
 			position: absolute;
 			top: 50%;
@@ -28,6 +32,7 @@
 			height: auto;
 			z-index: -1;
 		}
+
 		.glassmorphic-box {
 			background-color: rgba(255, 255, 255, 0.25);
 			backdrop-filter: blur(20px);
@@ -43,38 +48,33 @@
 			justify-content: flex-start;
 			text-align: center;
 		}
+
 		h1 {
 			margin-top: 0;
 			word-wrap: break-word;
-			line-height: 1;
+			line-height: 3;
 			font-family: 'Monoton', cursive;
+			font-size: 1rem;
 		}
-		@media screen and (max-width: 768px) {
-			.glassmorphic-box {
-				width: 90%;
-				height: auto;
-			}
-			
+
+		@media screen and (min-width: 768px) {
 			h1 {
-				font-size: 5vw;
+				font-size: 3rem;
 			}
-            
 		}
-        @media only screen and (max-width: 768px) {
-        /* Adjust text color for mobile devices */
-        body {
-            color: #333333;
-        }
-        ::placeholder {
-            color: #fcfcfc;
-        }
-        }
+
+		@media screen and (min-width: 1024px) {
+			h1 {
+				font-size: 3rem;
+			}
+		}
+
 		textarea, input {
 			background-color: transparent;
 			border: none;
 			border-bottom: 2px solid #ffffff;
 			color: #ffffff;
-			font-size:larger;
+			font-size: 2rem;
 			margin-top: 20px;
 			padding: 10px;
 			text-align: center;
@@ -82,17 +82,37 @@
 			outline: none;
 			font-family: 'Thasadith', sans-serif;
 		}
+
+		@media screen and (min-width: 768px) {
+			textarea, input {
+				font-size: 2.5rem;
+			}
+		}
+
+		@media screen and (min-width: 1024px) {
+			textarea, input {
+				font-size: 3rem;
+			}
+		}
+
+		textarea::placeholder,
+		input::placeholder {
+			color: #ffffff;
+			opacity: 1;
+		}
+
 		textarea {
 			height: 70%;
 			resize: none;
 		}
+
 		button {
 			margin-top: 20px;
 			background-color: transparent;
 			border: 2px solid rgba(255, 255, 255, 0.5);
 			border-radius: 20px;
 			color: #ffffff;
-			font-size: larger;
+			font-size: 2rem;
 			padding: 10px 20px;
 			cursor: pointer;
 			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -100,12 +120,24 @@
 			-webkit-backdrop-filter: blur(20px);
 			border: 1px solid rgba(255, 255, 255, 0.18);
 		}
+
+		@media screen and (min-width: 768px) {
+			button {
+				font-size: 2rem;
+			}
+		}
+
+		@media screen and (min-width: 1024px) {
+			button {
+				font-size: 2.5rem;
+			}
+		}
 	</style>
 </head>
 <body>
 	<div class="container">
 		<video autoplay muted loop playsinline>
-			<source src="clouds.mp4" type="video/mp4">
+			<source src="https://raw.githubusercontent.com/ellislunariz/ellislunariz.github.io/main/clouds.mp4" type="video/mp4">
 		</video>
 		<div class="glassmorphic-box">
 			<h1>Daydream Journal</h1>
@@ -143,10 +175,6 @@
 			const glassmorphicBox = document.querySelector('.glassmorphic-box');
 			if (glassmorphicBox) {
 				glassmorphicBox.style.width = '80%';
-                }
-            const html = document.querySelector('html');
-            if (html) {
-                html.style.fontSize = '36px'; // Adjust the font size here
 			}
 		}
 	</script>
