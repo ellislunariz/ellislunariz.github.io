@@ -1,182 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Daydream Journal</title>
-	<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Thasadith&display=swap" rel="stylesheet">
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background: #000000;
-			
-		}
+  <meta charset="UTF-8">
+  <title>ZENer</title>
 
-
-		.container {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-			position: relative;
-			overflow: hidden;
-		}
-
-		video {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			min-width: 100%;
-			min-height: 100%;
-			width: auto;
-			height: auto;
-			z-index: -1;
-		}
-
-		.glassmorphic-box {
-			background-color: rgba(255, 255, 255, 0.25);
-			backdrop-filter: blur(20px);
-			border-radius: 20px;
-			padding: 20px;
-			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-			color: #ffffff;
-			width: 35%;
-			height: 75vh;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: flex-start;
-			text-align: center;
-		}
-
-		h1 {
-			margin-top: 0;
-			word-wrap: break-word;
-			line-height: 3;
-			font-family: 'Monoton', cursive;
-			font-size: 1.5rem;
-		}
-
-		@media screen and (min-width: 768px) {
-			h1 {
-				font-size: 1.5rem;
-			}
-		}
-
-		@media screen and (min-width: 1024px) {
-			h1 {
-				font-size: 1.5rem;
-			}
-		}
-
-		textarea, input {
-			background-color: transparent;
-			border: none;
-			border-bottom: 2px solid #ffffff;
-			color: #ffffff;
-			font-size: 1.5rem;
-			margin-top: 20px;
-			padding: 10px;
-			text-align: center;
-			width: 80%;
-			outline: none;
-			font-family: 'Thasadith', sans-serif;
-		}
-
-		@media screen and (min-width: 768px) {
-			textarea, input {
-				font-size: 1.5rem;
-			}
-		}
-
-		@media screen and (min-width: 1024px) {
-			textarea, input {
-				font-size: 2rem;
-			}
-		}
-
-		textarea::placeholder,
-		input::placeholder {
-			color: #ffffff;
-			opacity: 1;
-		}
-
-		textarea {
-			height: 70%;
-			resize: none;
-		}
-
-		button {
-			margin-top: 20px;
-			background-color: transparent;
-			border: 2px solid rgba(255, 255, 255, 0.5);
-			border-radius: 20px;
-			color: #ffffff;
-			font-size: 1.5rem;
-			padding: 10px 20px;
-			cursor: pointer;
-			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-			backdrop-filter: blur(20px);
-			-webkit-backdrop-filter: blur(20px);
-			border: 1px solid rgba(255, 255, 255, 0.18);
-		}
-
-		@media screen and (min-width: 768px) {
-			button {
-				font-size: 1.5rem;
-			}
-		}
-
-		@media screen and (min-width: 1024px) {
-			button {
-				font-size: 2rem;
-			}
-		}
-	</style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap" rel="stylesheet"> 
 </head>
+
 <body>
-	<div class="container">
-		<video autoplay muted loop playsinline>
-			<source src="https://raw.githubusercontent.com/ellislunariz/ellislunariz.github.io/main/clouds.mp4" type="video/mp4">
-		</video>
-		<div class="glassmorphic-box">
-			<h1>Daydream Journal</h1>
-			<input type="text" id="journal-title" placeholder="Title">
-			<textarea id="journal-entry" placeholder="Start Typing"></textarea>
-			<button onclick="saveTextAsFile()">Save</button>
-		</div>
-	</div>
-	<script>
-		function saveTextAsFile() {
-			const titleToSave = document.getElementById("journal-title").value;
-			const textToSave = document.getElementById("journal-entry").value;
-			const textAsBlob = new Blob([textToSave], {type:"text/plain"});
-			const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
-			const fileNameToSaveAs = `${titleToSave} (${currentDate}).txt`;
+  <video autoplay muted loop playsinline>
+    <source src="./video/video.mp4" type="video/mp4">
+  </video>
 
-			const downloadLink = document.createElement("a");
-			downloadLink.download = fileNameToSaveAs;
-			downloadLink.innerHTML = "Download File";
-			if (window.webkitURL != null) {
-				// Chrome allows the link to be clicked without actually adding it to the DOM
-				downloadLink.href = window.webkitURL.createObjectURL(textAsBlob);
-			} else {
-				// Firefox requires the link to be added to the DOM before it can be clicked
-				downloadLink.href = window.URL.createObjectURL(textAsBlob);
-				downloadLink.onclick = event => document.body.removeChild(event.target);
-				downloadLink.style.display = "none";
-				document.body.appendChild(downloadLink);
-			}
-			downloadLink.click();
-		}
+  <div class="title">
+    <h1>ZENer</h1>
+  </div>
 
-		// Detect if mobile device is being used
-		if (/Mobi|Android/i.test(navigator.userAgent)) {
-			const glassmorphicBox = document.querySelector('.glassmorphic-box');
-			if (glassmorphicBox) {
-				glassmorphicBox.style.width = '80%';
-			}
-		}
-	</script>
+  <div class="round">
+    <h4>Round 1/5</h4>
+  </div>
+
+
+  <div class="score">
+    <h4>Score: 0/5</h4>
+  </div>
+
+  <div class="card-container">
+    <div class="card-wrapper">
+      <div class="card"></div>
+      <div class="end-game-message"></div> 
+      <img class="shape-img" src="" alt="">
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button class="circle-button">
+      <img src="./icons/circle.png">
+    </button>
+    <button class="square-button">
+      <img src="./icons/square.png">
+    </button>
+    <button class="cross-button">
+      <img src="./icons/cross.png">
+    </button>
+    <button class="star-button">
+      <img src="./icons/star.png">
+    </button>
+    <button class="waves-button">
+      <img src="./icons/waves.png">
+    </button>
+  </div>
+
+  <footer class="bottom">
+    <p>faq</p>
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2><u>a ZENer card reimplementation</u></h2>
+      <br>
+      <p>five rounds</p>
+      <br>
+      <p>five cards</p>
+      <br>
+      <p>one card drawn at random</p>
+      <p>figure out which one</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p>touch anywhere to close this</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
